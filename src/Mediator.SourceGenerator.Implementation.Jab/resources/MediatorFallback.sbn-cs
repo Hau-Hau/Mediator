@@ -21,7 +21,7 @@ namespace {{ MediatorNamespace }}
     /// <summary>
     /// Mediator module for Jab.
     /// </summary>
-    [ServiceProviderModule]
+    [global::Jab.ServiceProviderModule]
     {{~ if ServiceLifetimeIsScoped ~}}
     [global::Jab.{{ ServiceLifetime }}(typeof(global::{{ MediatorNamespace }}.Mediator), typeof(global::{{ MediatorNamespace }}.Mediator))]
     [global::Jab.{{ ServiceLifetime }}(typeof(global::Mediator.IMediator), typeof(global::{{ MediatorNamespace }}.Mediator))]
