@@ -22,9 +22,23 @@ namespace {{ MediatorNamespace }}
     /// Mediator module for Jab.
     /// </summary>
     [ServiceProviderModule]
-    {{~ for message in RequestMessages ~}}
-    [global::Mediator.{{ message.Handler.ServiceLifetime }}(typeof({{ message.HandlerWrapperTypeNameWithGenericTypeArguments }}))]
+    {{~ if ServiceLifetimeIsScoped ~}}
+    [global::Jab.{{ ServiceLifetime }}(typeof(global::{{ MediatorNamespace }}.Mediator), typeof(global::{{ MediatorNamespace }}.Mediator))]
+    [global::Jab.{{ ServiceLifetime }}(typeof(global::Mediator.IMediator), typeof(global::{{ MediatorNamespace }}.Mediator))]
+    [global::Jab.{{ ServiceLifetime }}(typeof(global::Mediator.ISender), typeof(global::{{ MediatorNamespace }}.Mediator))]
+    [global::Jab.{{ ServiceLifetime }}(typeof(global::Mediator.IPublisher), typeof(global::{{ MediatorNamespace }}.Mediator))]
+    {{ else }}
+    [global::Jab.{{ SingletonServiceLifetime }}(typeof(global::{{ MediatorNamespace }}.Mediator), typeof(global::{{ MediatorNamespace }}.Mediator))]
+    [global::Jab.{{ SingletonServiceLifetime }}(typeof(global::Mediator.IMediator), typeof(global::{{ MediatorNamespace }}.Mediator))]
+    [global::Jab.{{ SingletonServiceLifetime }}(typeof(global::Mediator.ISender), typeof(global::{{ MediatorNamespace }}.Mediator))]
+    [global::Jab.{{ SingletonServiceLifetime }}(typeof(global::Mediator.IPublisher), typeof(global::{{ MediatorNamespace }}.Mediator))]
     {{~ end ~}}
+
+    {{~ for message in RequestMessages ~}}
+    [global::Jab.{{ message.Handler.ServiceLifetime }}(typeof({{ message.HandlerWrapperIRequestHandler }}, typeof({{ message.Handler.FullName }}))]
+    [global::Jab.{{ message.Handler.ServiceLifetime }}(typeof({{ message.HandlerWrapperTypeNameWithGenericTypeArguments }}))]
+    {{~ end ~}}
+
     {{~ for handler in NotificationMessageHandlers ~}}
     {{ handler.ServiceRegistrationBlock }}
     {{~ end ~}}
@@ -38,7 +52,7 @@ namespace {{ MediatorNamespace }}
     {{~ for handler in OpenGenericNotificationMessageHandlers ~}}
     {{ handler.OpenGenericServiceRegistrationBlock }}
     {{~ end ~}}
-    [Jab.Singleton(typeof(global::Microsoft.Extensions.DependencyInjection.MediatorDependencyInjectionExtensions.Dummy))]
+    [global::Jab.Singleton(typeof(global::Microsoft.Extensions.DependencyInjection.MediatorDependencyInjectionExtensions.Dummy))]
     [global::System.CodeDom.Compiler.GeneratedCode("Mediator.SourceGenerator", "{{ GeneratorVersion }}")]
     public interface IMediatorModule
     {
