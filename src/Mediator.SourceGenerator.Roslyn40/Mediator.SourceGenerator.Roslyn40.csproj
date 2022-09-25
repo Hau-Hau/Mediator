@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Mediator.SourceGenerator.Implementation\Mediator.SourceGenerator.Implementation.csproj" />
+    <ProjectReference Include="..\Mediator.SourceGenerator.Implementation.Jab\Mediator.SourceGenerator.Implementation.Jab.csproj" />
   </ItemGroup>
 
 </Project>

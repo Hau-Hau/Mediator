@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <PackageReference Include="Mediator.SourceGenerator" Version="2.0.*-*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Mediator.Abstractions" Version="2.0.*-*" />
+  </ItemGroup>-->
+
+  <ItemGroup><!--<CompilerVisibleProperty Include="Mediator_AttachDebugger" />-->
+    <PackageReference Include="Jab" Version="0.8.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleConsoleJab.Module\SimpleConsoleJab.Module.csproj" />
+  </ItemGroup>
+
+</Project>

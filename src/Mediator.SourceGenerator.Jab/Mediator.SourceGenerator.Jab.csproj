@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>true</IsPackable>
+    <Description>
+      A high performance .NET Mediator pattern implemenation using source generation.
+      Package targeted for Jab Dependency injection Container.
+    </Description>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <DevelopmentDependency>true</DevelopmentDependency>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mediator.SourceGenerator.Implementation.Jab\Mediator.SourceGenerator.Implementation.Jab.csproj" IncludeAssets="none" PrivateAssets="none" ExcludeAssets="all" />
+    <ProjectReference Include="..\Mediator.SourceGenerator.Roslyn38\Mediator.SourceGenerator.Roslyn38.csproj" IncludeAssets="none" PrivateAssets="none" ExcludeAssets="all" />
+    <ProjectReference Include="..\Mediator.SourceGenerator.Roslyn40\Mediator.SourceGenerator.Roslyn40.csproj" IncludeAssets="none" PrivateAssets="none" ExcludeAssets="all" />
+    <None Include="$(OutputPath)\Mediator.SourceGenerator.Implementation.Jab.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(OutputPath)\Mediator.SourceGenerator.Roslyn38.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn3.8/cs" Visible="false" />
+    <None Include="$(OutputPath)\Mediator.SourceGenerator.Roslyn40.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.0/cs" Visible="false" />
+  </ItemGroup>
+
+</Project>

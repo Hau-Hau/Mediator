@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageScribanIncludeSource>true</PackageScribanIncludeSource>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Mediator.SourceGenerator.Tests" />
+    <InternalsVisibleTo Include="Mediator.SourceGenerator.Roslyn38" />
+    <InternalsVisibleTo Include="Mediator.SourceGenerator.Roslyn40" />
+    <InternalsVisibleTo Include="Mediator.SourceGenerator.Roslyn38.Tests" />
+    <InternalsVisibleTo Include="Mediator.SourceGenerator.Roslyn40.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Microsoft.CodeAnalysis" />
+    <Using Include="Microsoft.CodeAnalysis.CSharp.Syntax" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="resources\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="resources\Mediator.sbn-cs" />
+    <None Remove="resources\MediatorFallback.sbn-cs" />
+    <None Remove="resources\MediatorOptions.sbn-cs" />
+    <None Remove="resources\MediatorOptionsAttribute.sbn-cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Jab" Version="0.8.4" />
+    <PackageReference Include="Scriban" Version="5.4.6" IncludeAssets="Build" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.8.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.8.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="3.8.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" PrivateAssets="all" />
+  </ItemGroup>
+
+
+</Project>

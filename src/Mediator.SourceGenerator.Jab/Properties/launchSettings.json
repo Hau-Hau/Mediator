@@ -1,0 +1,8 @@
+{
+    "profiles": {
+        "Mediator.SourceGenerator.Jab": {
+            "commandName": "DebugRoslynComponent",
+            "targetProject": "..\\..\\samples\\SimpleConsoleJab\\SimpleConsoleJab.csproj"
+        }
+    }
+}
